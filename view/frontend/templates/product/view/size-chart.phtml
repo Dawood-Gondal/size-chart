@@ -1,0 +1,28 @@
+<?php
+/**
+ * @category    M2Commerce Enterprise
+ * @package     M2Commerce_SizeChart
+ * @copyright   Copyright (c) 2023 M2Commerce Enterprise
+ * @author      dawoodgondaldev@gmail.com
+ */
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+/** @var $escaper \Magento\Framework\Escaper */
+
+$product = $block->getProduct();
+if ($sizeChartContent = $product->getData('size_chart_html')): ?>
+    <a href="#" id="size-chart-btn" data-role="size-chart-btn" class="action size-chart-btn">
+        <span><?= $block->escapeHtml(__('Size Chart')) ?></span>
+    </a>
+
+    <div id="size-chart-popup" class="size-chart-popup" style="display: none;">
+        <?php echo $sizeChartContent; ?>
+    </div>
+    <script type="text/x-magento-init">
+        {
+            "#size-chart-btn": {
+                "sizeChartJs": {}
+            }
+        }
+    </script>
+<?php endif; ?>
